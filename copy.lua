@@ -1,7 +1,7 @@
 local M = {}
 
-local selection = require 'ai-context.selection'
-local util = require 'ai-context.util'
+local selection = require('ai-context.selection')
+local util = require('ai-context.util')
 
 function M.copy_selection()
   local sel = selection.get_visual_selection()
@@ -15,13 +15,8 @@ function M.copy_selection()
   local lang = vim.bo[bufnr].filetype or ''
   local range = util.format_range(sel.start_line, sel.end_line)
 
-  local payload = string.format(
-    '`%s:%s`\n```%s\n%s\n```\n',
-    path,
-    range,
-    lang,
-    sel.text
-  )
+  local payload =
+    string.format('`%s:%s`\n```%s\n%s\n```\n', path, range, lang, sel.text)
 
   vim.fn.setreg('+', payload)
   vim.fn.setreg('"', payload)

@@ -6,12 +6,12 @@ function M.get_visual_selection()
 
   local start_pos, end_pos
   if is_visual then
-    vim.cmd 'normal! "\27"'
-    start_pos = vim.fn.getpos "'<"
-    end_pos = vim.fn.getpos "'>"
+    vim.cmd('normal! "\27"')
+    start_pos = vim.fn.getpos("'<")
+    end_pos = vim.fn.getpos("'>")
   else
-    start_pos = vim.fn.getpos "'<"
-    end_pos = vim.fn.getpos "'>"
+    start_pos = vim.fn.getpos("'<")
+    end_pos = vim.fn.getpos("'>")
   end
 
   local s_line, s_col = start_pos[2], start_pos[3]
